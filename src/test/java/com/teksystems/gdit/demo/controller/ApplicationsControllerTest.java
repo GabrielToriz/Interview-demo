@@ -195,7 +195,7 @@ public class ApplicationsControllerTest {
               .firstName("Gabriel")
               .lastName("Toriz")
               .ssn("123456789")
-              .dateOfBirth("1986-07-03")
+              .dateOfBirth("2000-07-03")
               .build())
           .dependencyStatus("dependent")
           .maritalStatus("married")
