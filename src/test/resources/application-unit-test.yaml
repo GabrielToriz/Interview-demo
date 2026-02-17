@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: gdit-applications
+
+logging:
+  level:
+    root: DEBUG
+
+external:
+  operation:
+    api-key: dummy-key
+
+applications:
+  rules:
+    minimum-age: 14

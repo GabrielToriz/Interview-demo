@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: gdit-applications
+
+logging:
+  level:
+    root: ${APPLICATIONS_LOG_LEVEL:INFO}
+
+external:
+  operation:
+    api-key: ${API_KEY:dummy-key}
+
+applications:
+  rules:
+    minimum-age: ${MINIMUM_AGE:14}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      externalService:
+        registerHealthIndicator: true
+        slidingWindowSize: ${CB_EXTERNAL_SERVICE_SLIDING_WINDOW_SIZE:10}
+        minimum-number-of-calls: ${CB_EXTERNAL_SERVICE_MIN_NUMBER_OF_CALLS:5}
+        wait-duration-in-open-state: ${CB_EXTERNAL_SERVICE_OPEN_STATE_DURATION:10}
+        record-exceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.net.SocketTimeoutException
+
+server:
+  shutdown: graceful
